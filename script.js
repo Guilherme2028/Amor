@@ -1,19 +1,23 @@
-// Esse script garante que os corações sejam criados dinamicamente
-window.onload = function() {
-    const heartsContainer = document.querySelector('.hearts');
-    const heartEmojis = ['❤️', '💚', '💙', '💜', '🧡', '💛'];
+// Gerar a chuva de corações
+const heartRain = document.querySelector('.heart-rain');
 
-    // Cria corações dinamicamente
-    for (let i = 0; i < 100; i++) {
-        let heart = document.createElement('span');
-        heart.classList.add('heart');
-        heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+function generateHearts() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.textContent = '❤️'; // Coração
 
-        // Aplica um atraso e animação aleatórios
-        heart.style.animationDuration = `${Math.random() * 6 + 10}s`;  // Duração aleatória entre 10s e 16s
-        heart.style.animationDelay = `${Math.random() * 5}s`;  // Atraso aleatório entre 0s e 5s
-        heart.style.left = `${Math.random() * 100}%`;  // Posição aleatória de esquerda para a direita
+    // Posição aleatória
+    const startPositionX = Math.random() * window.innerWidth;
+    heart.style.left = `${startPositionX}px`;
 
-        heartsContainer.appendChild(heart);
-    }
-};
+    // Temporizador para adicionar corações continuamente
+    heartRain.appendChild(heart);
+
+    // Remover o coração após a animação
+    setTimeout(() => {
+        heart.remove();
+    }, 10000); // Remove o coração após 10 segundos
+}
+
+// Gera corações a cada 500ms
+setInterval(generateHearts, 500);
