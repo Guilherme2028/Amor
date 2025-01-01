@@ -21,3 +21,18 @@ function generateHearts() {
 
 // Gera corações a cada 500ms
 setInterval(generateHearts, 500);
+
+// Funcionalidade do menu pop-up
+const menuButton = document.querySelector('.menu-button');
+const menuPopup = document.querySelector('.menu-popup');
+const closeButton = document.querySelector('.close-btn');
+
+// Mostrar o menu pop-up
+menuButton.addEventListener('click', () => {
+    menuPopup.style.display = 'flex';
+});
+
+// Fechar o menu pop-up
+closeButton.addEventListener('click', () => {
+    menuPopup.style.display = 'none';
+});
