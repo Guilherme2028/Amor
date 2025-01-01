@@ -1,1 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - AF</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            background-color: #000; /* Fundo preto para o site */
+            color: #fff; /* Texto branco */
+            overflow-x: hidden; /* Previne o scroll horizontal */
+        }
 
+        /* Barra de navegação */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #000; /* Fundo preto para a barra */
+            border-bottom: 1px solid #333; /* Linha de separação sutil */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Logo (AF) */
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff; /* Cor branca para as letras AF */
+            letter-spacing: 2px; /* Espaçamento entre as letras */
+        }
+
+        /* Botão de Menu (ícone hamburger) */
+        .menu-button {
+            background: none;
+            border: none;
+            font-size: 30px;
+            color: #fff; /* Cor branca para o ícone */
+            cursor: pointer;
+        }
+
+        /* Menu pop-up */
+        .menu-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Fundo preto semi-transparente */
+            display: none; /* Inicialmente invisível */
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .menu-content {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .menu-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-content ul li {
+            margin: 15px 0;
+        }
+
+        .menu-content ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .menu-content ul li a:hover {
+            color: #ff69b4; /* Cor ao passar o mouse */
+        }
+
+        /* Botão de fechar */
+        .close-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 30px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        /* Estilo do conteúdo */
+        .content {
+            padding: 20px;
+            text-align: center;
+            margin-top: 150px; /* Ajusta para o conteúdo não ficar coberto pela barra */
+        }
+
+        .content h1 {
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Seções */
+        .section {
+            margin: 50px 0;
+        }
+
+        /* Estilo do portfólio de fotos */
+        .portfolio {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .portfolio h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .portfolio p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 0 20px;
+        }
+
+        .portfolio-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Chuva de corações */
+        .heart-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            animation: fall 10s infinite;
+            opacity: 0;
+            animation-timing-function: linear;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        .heart:nth-child(odd) {
+            color: #ff69b4; /* Rosa */
+        }
+
+        .heart:nth-child(even) {
+            color: #ff6347; /* Vermelho */
+        }
+    </style>
+</head>
+<body>
+    <!-- Chuva de corações -->
+    <div class="heart-rain"></div>
+
+    <!-- Barra de navegação -->
+    <header class="navbar">
+        <div class="logo">AF</div>
+        <button class="menu-button">&#9776;</button> <!-- Ícone de menu -->
+    </header>
+
+    <!-- Menu pop-up -->
+    <div class="menu-popup">
+        <div class="menu-content">
+            <button class="close-btn">&times;</button>
+            <ul>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#sobre">Sobre Mim</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Conteúdo da página -->
+    <div class="content">
+        <h1>Portfólio de Fotos</h1>
+        <p>Confira algumas das minhas fotos mais especiais.</p>
+
+        <!-- Seção de Portfólio de Fotos -->
+        <div id="portfolio" class="portfolio">
+            <div class="portfolio-grid">
+                <img src="imagens/imagem1.jpeg" alt="Imagem 1">
+                <img src="imagens/imagem2.jpeg" alt="Imagem 2">
+                <img src="imagens/imagem3.jpeg" alt="Imagem 3">
+                <img src="imagens/imagem4.jpeg" alt="Imagem 4">
+                <img src="imagens/imagem5.jpeg" alt="Imagem 5">
+                <img src="imagens/imagem6.jpeg" alt="Imagem 6">
+            </div>
+        </div>
+
+        <!-- Sobre Mim -->
+        <div id="sobre" class="section">
+            <h2>Sobre Mim</h2>
+            <p>Sou uma pessoa apaixonada por capturar momentos especiais. Estas fotos são algumas das minhas favoritas!</p>
+        </div>
+    </div>
+
+    <script>
+        // Gerar a chuva de corações
+        const heartRain = document.querySelector('.heart-rain');
+
+        function generateHearts() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.textContent = '❤️'; // Coração
+
+            // Posição aleatória
+            const startPositionX = Math.random() * window.innerWidth;
+            heart.style.left = `${startPositionX}px`;
+
+            // Temporizador para adicionar corações continuamente
+            heartRain.appendChild(heart);
+
+            // Remover o coração após a animação
+            setTimeout(() => {
+                heart.remove();
+            }, 10000); // Remove o coração após 10 segundos
+        }
+
+        // Gera corações a cada 500ms
+        setInterval(generateHearts, 500);
+
+        // Funcionalidade do menu pop-up
+        const menuButton = document.querySelector('.menu-button');
+        const menuPopup = document.querySelector('.menu-popup');
+        const closeButton = document.querySelector('.close-btn');
+
+        // Mostrar o menu pop-up
+        menuButton.addEventListener('click', () => {
+            menuPopup.style.display = 'flex';
+        });
+
+        // Fechar o menu pop-up
+        closeButton.addEventListener('click', () => {
+            menuPopup.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
+``
