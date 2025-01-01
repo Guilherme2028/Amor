@@ -38,33 +38,59 @@ body {
     cursor: pointer;
 }
 
-/* Carrossel de Imagens */
-.carousel {
-    position: relative;
-    margin-top: 100px; /* Deixa espaço para a barra fixa */
+/* Menu pop-up */
+.menu-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    overflow: hidden;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo preto semi-transparente */
+    display: none; /* Inicialmente invisível */
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
 }
 
-.carousel-container {
-    display: flex;
-    animation: slide 25s infinite;
+.menu-content {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
 }
 
-.carousel-item {
-    width: 100%;
-    max-height: 500px;
-    object-fit: cover;
-    transition: opacity 1s ease-in-out;
+.menu-content ul {
+    list-style: none;
+    padding: 0;
 }
 
-@keyframes slide {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(-100%); }
-    40% { transform: translateX(-200%); }
-    60% { transform: translateX(-300%); }
-    80% { transform: translateX(-400%); }
-    100% { transform: translateX(0); }
+.menu-content ul li {
+    margin: 15px 0;
+}
+
+.menu-content ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.menu-content ul li a:hover {
+    color: #ff69b4; /* Cor ao passar o mouse */
+}
+
+/* Botão de fechar */
+.close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
 }
 
 /* Estilo do conteúdo */
@@ -78,6 +104,11 @@ body {
     font-size: 30px;
     font-weight: 600;
     margin-bottom: 20px;
+}
+
+/* Seções */
+.section {
+    margin: 50px 0;
 }
 
 /* Chuva de corações */
